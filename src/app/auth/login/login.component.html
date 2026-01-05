@@ -1,25 +1,22 @@
-<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+<form [formGroup]="formData" (ngSubmit)="onSubmit()">
   <h2>Login</h2>
 
   <div class="control-row">
     <div class="control no-margin">
       <label for="email">Email</label>
-      <input
-        id="email"
-        type="email"
-        name="email"
-        required
-        ngModel
-        email
-        #email="ngModel"
-      />
+      <input id="email" type="email" name="email" formControlName="email" />
     </div>
 
     <div class="control no-margin">
       <label for="password">Password</label>
-      <input id="password" type="password" name="password" required ngModel #password="ngModel" minlength="6" />
+      <input
+        id="password"
+        type="password"
+        name="password"
+        formControlName="password"
+      />
     </div>
 
-    <button class="button" [disabled]="form.invalid">Login</button>
+    <button class="button" [disabled]="formData.invalid">Login</button>
   </div>
 </form>
